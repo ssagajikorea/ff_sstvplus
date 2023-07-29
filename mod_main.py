@@ -46,6 +46,7 @@ class ModuleMain(PluginModuleBase):
         arg = P.ModelSetting.to_dict()
         arg["api_m3u"] = ToolUtil.make_apikey_url(f"/{P.package_name}/api/m3u")
         arg["api_yaml"] = ToolUtil.make_apikey_url(f"/{P.package_name}/api/yaml")
+        arg["api_epg"] = ToolUtil.make_apikey_url(f"/{P.package_name}/api/epg")
         if sub == "setting":
             arg["is_include"] = F.scheduler.is_include(self.get_scheduler_name())
             arg["is_running"] = F.scheduler.is_running(self.get_scheduler_name())
@@ -67,6 +68,8 @@ class ModuleMain(PluginModuleBase):
                 return SSTVPLUS_Handler.make_m3u()
             elif sub == "yaml":
                 return SSTVPLUS_Handler.make_yaml()
+            elif sub == "epg":
+                return SSTVPLUS_Handler.epg()
             elif sub == "url.m3u8":
                 return SSTVPLUS_Handler.url_m3u8(req)
             elif sub == "play":
