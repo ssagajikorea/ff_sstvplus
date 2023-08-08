@@ -59,7 +59,7 @@ class ModuleMain(PluginModuleBase):
             return jsonify({"list": SSTVPLUS_Handler.ch_list(), "updated_at": updated_at})
         elif command == "play_url":
             url = ToolUtil.make_apikey_url(f"/{P.package_name}/api/url.m3u8?ch_id={arg1}")
-            ret = {"ret": "success", "data": url, "title": arg2}
+            ret = {"ret": "success", "data": url}
         return jsonify(ret)
 
     def process_api(self, sub, req):
